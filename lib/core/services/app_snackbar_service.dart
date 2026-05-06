@@ -13,7 +13,7 @@ class AppSnackbarService {
           behavior: SnackBarBehavior.floating,
           margin: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // optional rounded corners
+            borderRadius: BorderRadius.circular(12), 
           ),
         ),
       );

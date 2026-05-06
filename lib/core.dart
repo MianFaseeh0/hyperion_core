@@ -19,7 +19,7 @@ export 'core/services/app_snackbar_service.dart';
 export 'core/services/app_dialog_services.dart';
 export 'core/constants/app_enums.dart';
 export 'core/widgets/app_value_tile.dart';
-
+export 'package:hyperion_core/core/repository/authentication/email_auth_repository.dart';
 export 'core/theme/app_shadows.dart';
 export 'core/extensions/dart_extensions.dart';
 export 'core/repository/authentication/google_auth_repository.dart';

@@ -8,6 +8,15 @@ enum DriverAccountStatus {
   suspended,
 }
 
+enum AppButtonSize {
+  small,
+  medium,
+  large,
+  extraLarge,
+  extraLargeCircled,
+  fullWidth,
+}
+
 extension DriverAccountStatusHelpers on DriverAccountStatus {
   String get backendValue {
     switch (this) {

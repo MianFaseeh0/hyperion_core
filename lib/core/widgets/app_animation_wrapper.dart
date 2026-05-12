@@ -9,6 +9,7 @@ enum AppAnimationType {
   fadeIn,
   scale,
   floating,
+  none
 }
 
 class AppAnimationWrapper extends StatefulWidget {
@@ -17,7 +18,7 @@ class AppAnimationWrapper extends StatefulWidget {
   final Duration duration;
   final Curve curve;
   final double offset;
-  final double amplitude; // 🔥 for floating
+  final double amplitude; 
 
   const AppAnimationWrapper({
     super.key,
@@ -26,7 +27,7 @@ class AppAnimationWrapper extends StatefulWidget {
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.easeOut,
     this.offset = 0.1,
-    this.amplitude = 3, // default subtle movement
+    this.amplitude = 3, 
   });
 
   @override
@@ -53,20 +54,23 @@ class _AppAnimationWrapperState extends State<AppAnimationWrapper>
   }
 
   @override
-  void initState() {
-    super.initState();
+void initState() {
+  super.initState();
+  _controller = AnimationController(vsync: this, duration: widget.duration);
 
-    _controller = AnimationController(vsync: this, duration: widget.duration);
-
-    if (widget.animationType == AppAnimationType.floating) {
-      _controller.repeat(); // infinite loop
-    } else {
-      _controller.forward(); // one-time animation
-    }
+  if (widget.animationType == AppAnimationType.none) {
+  } else if (widget.animationType == AppAnimationType.floating) {
+    _controller.repeat();
+  } else {
+    _controller.forward();
   }
+}
 
   @override
   Widget build(BuildContext context) {
+     if (widget.animationType == AppAnimationType.none) {
+    return widget.child; // 👈 skip all animation logic
+  }
     final beginOffset = _getBeginOffset();
 
     return AnimatedBuilder(

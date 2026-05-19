@@ -3,7 +3,14 @@ import 'package:hyperion_core/core.dart';
 import 'package:hyperion_core/core/theme/app_text_styles.dart';
 import 'package:hyperion_core/core/theme/app_theme.dart';
 import 'package:hyperion_core/core/widgets/app_text_widget.dart';
-
+enum AppButtonSize {
+  small,
+  medium,
+  large,
+  extraLarge,
+  extraLargeCircled,
+  fullWidth,
+}
 class AppElevatedButton extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed;
@@ -12,6 +19,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? textColor;
   final String? icon;
   final bool isDisabled;
+  final TextStyle? textStyle;
   final bool isLoading;
   final Color? borderColor;
   final double? borderWidth;
@@ -24,6 +32,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? shadowColor;
   final double? shadowBlurRadius;
   final Offset? shadowOffset;
+  
   final double? customBorderRadius;
 
   const AppElevatedButton({
@@ -39,6 +48,7 @@ class AppElevatedButton extends StatelessWidget {
     this.isLoading = false,
     this.borderColor,
     this.borderWidth,
+    this.textStyle,
     this.disabledColor,
     this.disabledTextColor,
     this.width,
@@ -145,13 +155,16 @@ class AppElevatedButton extends StatelessWidget {
             ? (textColor ?? AppThemes.primaryColor)
             : (textColor ?? Colors.white);
 
-    Widget content = AppTextWidget(
-      data: title,
-      textStyle: _textStyle.copyWith(
-        color: resolvedTextColor,
-      ),
-      textAlign: TextAlign.center,
-    );
+   final TextStyle resolvedTextStyle =
+    _textStyle.copyWith(
+      color: resolvedTextColor,
+    ).merge(textStyle);
+
+Widget content = AppTextWidget(
+  data: title,
+  textStyle: resolvedTextStyle,
+  textAlign: TextAlign.center,
+);
 
     if (icon != null) {
       content = Row(

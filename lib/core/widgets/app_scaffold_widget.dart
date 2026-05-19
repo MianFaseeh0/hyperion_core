@@ -18,6 +18,8 @@ class AppScaffoldWidget extends StatelessWidget {
   final bool canLooseFocusOnTapOutside;
   final bool safeAreaTop;
     final bool safeAreaBottom;
+        final bool extendBodyBehindAppbar;
+
 
   const AppScaffoldWidget({
     super.key,
@@ -36,6 +38,7 @@ class AppScaffoldWidget extends StatelessWidget {
     this.canLooseFocusOnTapOutside = false,
     this.safeAreaTop=true,
     this.safeAreaBottom=true,
+    this.extendBodyBehindAppbar=false
     
   });
 
@@ -96,6 +99,7 @@ class AppScaffoldWidget extends StatelessWidget {
 
     return Scaffold(
       appBar: appBar,
+      extendBodyBehindAppBar:extendBodyBehindAppbar ,
       drawer: drawer,
       endDrawer: endDrawer,
       floatingActionButton: floatingActionButton,

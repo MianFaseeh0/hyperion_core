@@ -24,3 +24,4 @@ export 'core/theme/app_shadows.dart';
 export 'core/extensions/dart_extensions.dart';
 export 'core/repository/authentication/google_auth_repository.dart';
 export 'core/repository/authentication/user_model.dart';
+export 'core/extensions/spacing_extension.dart';
